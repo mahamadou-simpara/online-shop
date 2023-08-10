@@ -1,0 +1,67 @@
+main{
+ width: 70%;
+ margin: auto;
+ text-align: center;
+}
+
+main h1{
+    color: rgba(68, 68, 68, 0.826);
+
+}
+
+main hr{
+ border-color: rgb(115, 69, 1);
+ margin: 0;
+ margin-bottom: 1rem;
+}
+
+
+
+#signUp-form-container form{
+ background-color: rgb(5 4 4 / 87%);
+ width: 45%;
+ margin: auto;
+ padding: 20px;
+}
+#signUp-form-container form label{
+ display: block;
+ font-size: 1rem;
+ color: white;
+}
+
+#signUp-form-container form input{
+ width: 100%;
+ margin: 0.2rem 0;
+ margin-bottom: 1rem;
+ height: 1.6rem;
+}
+
+#button-create-account button{
+ color: white;
+ background-color:rgb(115, 69, 1);
+ border: none;
+ padding: 0.3rem 2rem;
+ border-radius: 4px;
+ font-size: 1rem;
+ cursor: pointer;
+}
+
+#button-create-account button:hover{
+    background-color:rgb(174, 104, 0);
+}
+
+#button-create-account a{
+ text-decoration: none;
+ color: rgb(115, 69, 1);
+}
+
+#button-create-account a:hover{
+    color: rgb(158, 96, 3);
+}
+
+#error-message{
+    display: none;
+ background-color: rgb(59, 1, 1);
+ width: 80%;
+ margin: auto;
+}

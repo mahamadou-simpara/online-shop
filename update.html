@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="update.css" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <header>
+      <h1>WDE</h1>
+      <ul>
+        <li>Manage Products</li>
+        <li>Manage Orders</li>
+        <li id="logout-button">Logout</li>
+      </ul>
+    </header>
+    <main>
+    <h1>Update Product</h1>
+
+    <div id="update-form-container">
+        <form action="">
+            <div>
+                <label for="">Title</label>
+                <input type="text" name="" id="">
+            </div>
+            <div id="img-container">
+                <div>
+                    <label for="">Image</label>
+                    <input type="file" name="" id="">
+                </div>
+                <img id="img" src="https://flyingtiger.com/cdn/shop/products/clipboard-with-paper-pad-office-flying-tiger-copenhagen-220241.jpg?v=1671175824" alt="" srcset="">
+            </div>
+            <div>
+                <label for="">Summary</label>
+                <input type="text" name="" id="">
+            </div>
+            <div>
+                <label for="">Price</label>
+                <input type="number" name="" id="">
+            </div>
+            <div>
+                <label for="">Description</label>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+            </div>
+
+            <div id="btns">
+                <button id="btn-reset">Reset</button>
+                <button id="btn-save">Save</button>
+            </div>
+        </form>
+
+    </main>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+main {
+    width: 70%;
+    margin: auto;
+  }
+  main h1{
+   color: white;
+  }
+  #order-item-container ul {
+    list-style: none;
+  }
+  #product {
+    display: flex;
+    align-items: center;
+    color: white;
+    margin: 4px;
+  }
+  #order-item-container ul li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(32, 32, 32);
+    padding: 15px 25px;
+    border-radius: 3px;
+    margin: 1rem 0;
+    border-radius: 5px;
+  }
+  
+  #product-state{
+   background-color: rgb(208, 125, 0);
+   color: white;
+   padding: 0.2rem 0.5rem;
+   border-radius: 15px;
+   text-transform: uppercase;
+   letter-spacing: 0.2em;
+   color: white;
+   font-size: 1.5rem;
+  }
+
+  /* #product-state {
+ margin: 5px;
+  } */
+  
+  .fa-solid {
+    font-size: 2px;
+    margin: 4px;
+    color: white;
+  }
+  #date{
+   color: white;
+  }
+
+#customer-name{
+ color: rgb(255, 177, 61);
+}
+
+address{
+ color: white
+}
+
+#order-state form{
+ display: flex;
+ gap: 0.5rem;
+ margin: 0.8rem 0rem;
+}
+
+#order-state form select{
+ height: 2rem;
+ font-size: 1.3rem;
+ cursor: pointer;
+}
+#order-state button{
+ font-size: 1.3rem;
+ padding: 0.2rem 1rem;
+ background-color: transparent;
+ border: 1px solid rgb(208, 125, 0);
+ color: rgb(208, 125, 0);
+ cursor: pointer;
+}
+
+#order-state button:hover{
+    background-color: rgba(167, 167, 167, 0.128);
+    color: rgb(218, 146, 0);
+}
+
+#customer-product-lists{
+ padding: 0;
+}
+
+#order-item-container ol li{
+ margin: 0;
+ padding: 0;
+}
+
+#order-item-container ol li{
+ margin: 2px 0;
+}

@@ -1,0 +1,72 @@
+main{
+ width: 70%;
+ margin: auto;
+}
+
+#cart-item-container ul{
+ list-style: none;
+ 
+}
+
+#cart-item-container ul li{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(32, 32, 32);
+    padding: 10px;
+    border-radius: 3px;
+    margin: 1rem 0;
+}
+
+#update-number{
+ display: flex;
+ flex-direction: row;
+ gap: 0.5rem;
+}
+
+#update-number input{
+ height: 1.7rem;
+ border-radius: 3px;
+ border: none;
+ 
+}
+#update-number input:focus, #update-number input:active{
+ outline: none;
+}
+#update-number button{
+ height: 1.7rem;
+ background-color: transparent;
+ border: 1px solid rgb(163, 98, 0);
+ color:  rgb(163, 98, 0);
+ padding: 0.1rem 1rem;
+ border-radius: 3px;
+}
+
+#update-number button:hover{
+    background-color: rgba(39, 39, 39, 0.904);
+    color:  rgb(208, 125, 0);
+}
+#cart-item-container ul li h2{
+ margin: 0;
+}
+
+#total-amount{
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ padding: 10px;
+}
+
+#total-amount h3{
+ font-weight: bold;
+}
+
+#buy-product-btn{
+    height: 1.7rem;
+    background-color: rgb(163, 98, 0);
+    border: none;
+    color:  rgb(255, 255, 255);
+    padding: 0.1rem 1rem;
+    border-radius: 3px;
+}
