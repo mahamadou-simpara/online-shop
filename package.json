@@ -1,0 +1,24 @@
+{
+  "name": "online-website",
+  "version": "1.0.0",
+  "description": "Online shop website",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahamadou-simpara/online-shop.git"
+  },
+  "author": "Simpara",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mahamadou-simpara/online-shop/issues"
+  },
+  "homepage": "https://github.com/mahamadou-simpara/online-shop#readme",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('includes/head', {title: "Manage", css: '/css/manage-orders.css'}) %>
+  <body>
+    <header>
+      <h1>WDE</h1>
+      <ul>
+        <li>Shop</li>
+        <li>Cart <span>2</span></li>
+        <li>Signup</li>
+        <li>Login</li>
+        <li>Order</li>
+        <li id="logout-button">Logout</li>
+      </ul>
+    </header>
+    <main>
+      <div id="order-item-container">
+        <ul>
+          <li>
+            <div>
+              <p>
+                $<span>59,99 </span
+                ><time id="date">- Thus, August 19, 2021</time>
+              </p>
+              <p id="customer-name">Simpara</p>
+              <address>Street 300 (Bamako)</address>
+              <ol id="customer-product-lists">
+                <li>
+                  <p id="product">
+                    <i class="fa-solid fa-square"></i
+                    ><span id="product-name">Magic Trackpad </span>-<span
+                      id="total-amount"
+                    >
+                      $239.96</span
+                    ><span
+                      >(<span id="product-amount">$57.45</span>x<span
+                        id="multiplier"
+                        >4</span
+                      >)</span
+                    >
+                  </p>
+                </li>
+                <li>
+                  <p id="product">
+                    <i class="fa-solid fa-square"></i
+                    ><span id="product-name">Magic Trackpad </span>-<span
+                      id="total-amount"
+                    >
+                      $239.96</span
+                    ><span
+                      >(<span id="product-amount">$57.45</span>x<span
+                        id="multiplier"
+                        >4</span
+                      >)</span
+                    >
+                  </p>
+                </li>
+              </ol>
+
+              <div id="order-state">
+                <form action="">
+                  <select>
+                    <option value="">Fulfilled</option>
+                    <option value="">Pending</option>
+                    <option value="">Cancelled</option>
+                  </select>
+                  <div><button>Update</button></div>
+                </form>
+              </div>
+            </div>
+
+            <div>
+              <p id="product-state">Pending</p>
+            </div>
+          </li>          
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>
