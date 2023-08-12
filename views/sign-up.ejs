@@ -10,40 +10,40 @@
             <p>Please check your input. Password must be at least 6 characters long, postal code must be 5 characters long</p>
         </div>
         <div id="signUp-form-container">
-            <form action="">
+            <form action="/sign-up" method="POST">
                 <div>
-                    <label for="">Email</label>
-                    <input type="email" name="" id="">
+                    <label for="user_email">Email</label>
+                    <input type="email" name="email" id="user_email">
                 </div>
                 <div>
-                    <label for="">Confirm Email</label>
-                    <input type="email" name="" id="">
+                    <label for="user_confirm-email">Confirm Email</label>
+                    <input type="email" name="confirm-email" id="user_confirm-email">
                 </div>
                 <div>
-                    <label for="">Password</label>
-                    <input type="password" name="" id="">
+                    <label for="user_password">Password</label>
+                    <input type="password" name="password" id="user_password">
                     <hr>
                 </div>
                 <div>
-                    <label for="">Full Name</label>
-                    <input type="text" name="" id="">
+                    <label for="user_full-name">Full Name</label>
+                    <input type="text" name="full-name" id="user_full-name">
                 </div>
                 <div>
-                    <label for="">Street</label>
-                    <input type="text" name="" id="">
+                    <label for="user_street">Street</label>
+                    <input type="text" name="street" id="user_street">
                 </div>
                 <div>
-                    <label for="">Code Postal</label>
-                    <input type="number" name="" id="">
+                    <label for="user_code-postal">Code Postal</label>
+                    <input type="number" name="code-postal" id="user_code-postal">
                 </div>
                 <div>
                     <label for="">City</label>
-                    <input type="text" name="" id="">
+                    <input type="text" name="city" id="iuser_city">
                 </div>
 
                 <div id="button-create-account">
                     <button>Create Account</button>
-                    <a href="#"><p>Login instead</p></a>
+                    <a href="/sign-in"><p>Login instead</p></a>
                 </div>
             </form>
 

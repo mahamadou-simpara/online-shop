@@ -23,13 +23,6 @@ route.get('/order', (req, res) => {
     res.render('orders')
 });
 
-route.get('/sign-in', (req, res) => {
-    res.render('sign-in')
-});
-
-route.get('/sign-up', (req, res) => {
-    res.render('sign-up')
-});
 
 route.get('/update', (req, res) => {
     res.render('update')
