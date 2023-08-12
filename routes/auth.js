@@ -97,11 +97,24 @@ route.post('/sign-in',async (req, res) => {
         return;
     };
 
+    req.session.user = {
+        id: checkEmail._id,
+        email: checkEmail.email,
+        isAdmin: checkEmail.isAdmin
+    }
+    req.session.isAuth = true;
 
-    res.redirect('/');
+    req.session.save(() => {
+        res.redirect('/');
+    })
 
 });
 
+route.post('/log-out',async (req, res) => {
+    req.session.user = null;
+    req.session.isAuth = false;
 
+        res.redirect('/');
+})
 
 module.exports = route;

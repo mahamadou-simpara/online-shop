@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('includes/head', {title: "Sign-in", css: '/css/sign-up.css'}) %>
-<body>
+  <%- include('includes/head', {title: "Sign-in", css: '/css/sign-up.css'}) %>
+  <body>
     <%- include('includes/header') %>
-      <main>
-        <h1>Login</h1>
-        <div id="signUp-form-container">
-            <form action="/sign-in" method="POST">
-                <div>
-                    <label for="user_email">Email</label>
-                    <input type="email" name="email" id="user_email">
-                </div>
-                <div>
-                    <label for="user_password">Confirm Email</label>
-                    <input type="password" name="password" id="user_password">
-                </div>
+    <main>
+      <h1>Login</h1>
+      <div id="signUp-form-container">
+        <form action="/sign-in" method="POST">
+          <div>
+            <label for="user_email">Email</label>
+            <input type="email" name="email" id="user_email" />
+          </div>
+          <div>
+            <label for="user_password">Confirm Email</label>
+            <input type="password" name="password" id="user_password" />
+          </div>
 
-                <div id="button-create-account">
-                    <button>Login</button>
-                    <a href="/sign-up"><p>Create a new user</p></a>
-                </div>
-            </form>
-      </main>
-    
-</body>
+          <div id="button-create-account">
+            <button>Login</button>
+            <a href="/sign-up"><p>Create a new user</p></a>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
 </html>

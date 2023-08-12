@@ -1,0 +1,20 @@
+#error{
+ text-align: center;
+}
+
+#btn{
+ text-align: center;
+}
+
+#btn button{
+ background-color: rgb(152, 91, 0);
+ font-size: 1rem;
+ padding: 10px 25px;
+ border: none;
+ border-radius: 4px;
+ cursor: pointer;
+}
+
+#btn button:hover{
+    background-color: rgb(255, 161, 19);
+}

@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('includes/head', {title: "Orders", css: '/css/orders.css'}) %>
-<body>
-  <%- include('includes/header') %>
-      <main>
-        <h1>All Your Orders</h1>
-        <div id="order-item-container">
-            <ul>
-              <li>
-                <div>
-                    <p>$<span>59,99 </span><time id="date">- Thus, August 19, 2021</time></p>
-                    <p id="product"><i class="fa-solid fa-square"></i><span id="product-name">Magic Trackpad </span>-<span id="total-amount"> $239.96</span><span>(<span id="product-amount">$57.45</span>x<span id="multiplier">4</span>)</span> </p>
-                </div>
-    
-                <div>
-                  <p id="product-state">Pending</p>
-                </div>
-              </li>
-      </main>
-</body>
+  <body>
+    <%- include('includes/header') %>
+    <main>
+      <h1>All Your Orders</h1>
+      <div id="order-item-container">
+        <ul>
+          <li>
+            <div>
+              <p>
+                $<span>59,99 </span
+                ><time id="date">- Thus, August 19, 2021</time>
+              </p>
+              <p id="product">
+                <i class="fa-solid fa-square"></i
+                ><span id="product-name">Magic Trackpad </span>-<span
+                  id="total-amount"
+                >
+                  $239.96</span
+                ><span
+                  >(<span id="product-amount">$57.45</span>x<span
+                    id="multiplier"
+                    >4</span
+                  >)</span
+                >
+              </p>
+            </div>
+
+            <div>
+              <p id="product-state">Pending</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+  </body>
 </html>

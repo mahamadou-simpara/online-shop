@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('includes/head', {title: "Manage", css: '/css/manage-orders.css'}) %>
+  <%- include('includes/head', {title: "Manage", css: '/css/manage-orders.css'})
+  %>
   <body>
-    <header>
-      <h1>WDE</h1>
-      <ul>
-        <li>Shop</li>
-        <li>Cart <span>2</span></li>
-        <li>Signup</li>
-        <li>Login</li>
-        <li>Order</li>
-        <li id="logout-button">Logout</li>
-      </ul>
-    </header>
+    <%- include('includes/header') %>
     <main>
       <div id="order-item-container">
         <ul>
@@ -72,7 +63,7 @@
             <div>
               <p id="product-state">Pending</p>
             </div>
-          </li>          
+          </li>
         </ul>
       </div>
     </main>
