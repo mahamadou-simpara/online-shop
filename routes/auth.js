@@ -89,8 +89,6 @@ route.post('/sign-in',async (req, res) => {
         return;
     }
 
-    console.log(checkEmail);
-    console.log(data.password);
 
     const passwordCheck = await bcrypt.compare(data.password, checkEmail.password)
     
