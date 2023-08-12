@@ -41,8 +41,16 @@ route.post('/sign-up',async (req, res) => {
     } else if (!data.city) {
         console.log('Error: Invalid City');
         return;
+    }else if(isNaN(data['code-postal'])){
+        console.log('Error: Code-postal must be a number');
+        return;
     }
 
+    const checkEmail = await db.getDB().collection('users').findOne({email: data.email});
+    if(checkEmail){
+        console.log('Error: Existing Email !');
+        return
+    }
 
     const hashedPassword = await bcrypt.hash(data.password, 12);
 
@@ -64,6 +72,36 @@ route.post('/sign-up',async (req, res) => {
     }
 
     res.redirect('/sign-in');
+});
+
+
+route.post('/sign-in',async (req, res) => {
+    const data = req.body;
+    if (!data.email) {
+        console.log('Error: Invalid Email');
+        return;
+    };
+    
+
+    const checkEmail = await db.getDB().collection('users').findOne({email: data.email});
+    if(!checkEmail){
+        console.log('Error: Email not found!');
+        return;
+    }
+
+    console.log(checkEmail);
+    console.log(data.password);
+
+    const passwordCheck = await bcrypt.compare(data.password, checkEmail.password)
+    
+    if(!passwordCheck){
+        console.log('Error: Incorrect password!');
+        return;
+    };
+
+
+    res.redirect('/');
+
 });
 
 
