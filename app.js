@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = require('./routes/route')
 const path = require('path');
+const db = require('./data/database')
 // const ejs = require('ejs');
 
 
@@ -16,7 +17,8 @@ app.set('view engine', 'ejs');
 app.use(routes);
 
 
-
-app.listen(3000, function(){
-    console.log('App\'s running onn 3000!');
+db.connectDB().then(() => {
+    app.listen(3000, function(){
+        console.log('App\'s running onn 3000!');
+    });
 })
