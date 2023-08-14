@@ -41,8 +41,10 @@ route.get("/cart", (req, res) => {
   res.render("cart");
 });
 
-route.get("/detail", (req, res) => {
-  res.render("detail");
+route.get("/detail/:id",async (req, res) => {
+    const id = new ObjectId(req.params.id);
+    const product = await db.getDB().collection("products").findOne(id);
+  res.render("detail", {product: product});
 });
 
 route.get("/order", (req, res) => {
@@ -61,13 +63,26 @@ route.get("/manage-orders", (req, res) => {
   res.render("manage-orders");
 });
 
-route.get("/update", (req, res) => {
+route.get("/add_product", (req, res) => {
   if (!req.session.isAuth || !req.session.user.isAdmin) {
     res.redirect("404");
     return;
   }
-  res.render("update");
+  res.render("add_product");
 });
+
+route.get("/update_product/:id",async (req, res) => {
+    // if (!req.session.isAuth || !req.session.user.isAdmin) {
+    //   res.redirect("404");
+    //   return;
+    // }
+
+    const id = new ObjectId(req.params.id);
+    const product = await db.getDB().collection("products").findOne(id);
+
+    res.render("update_product", {product: product});
+  });
+
 
 route.get("/401", (req, res) => {
   res.render("401");
@@ -131,6 +146,24 @@ route.post('/delete_product',async (req, res) =>{
  await db.getDB().collection('products').deleteOne({_id: id});
 
  res.redirect('/admin');
-})
+});
+
+
+// route.post('/update_product', (req, res) =>{
+
+//     const data = req.body;
+//     // const product = {
+//     //     name: data.name,
+//     //     summary: data.summary,
+//     //     price: data.price,
+//     //     description: data.description,
+//     //     path: file.path,
+//     //   }
+//     console.log('See');
+//     console.log(data);
+//     console.log('See');
+
+//     res.redirect('/admin');
+// });
 
 module.exports = route;

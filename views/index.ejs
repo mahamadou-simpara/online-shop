@@ -6,15 +6,22 @@
     <main>
       <div id="container">
         <h1>All Products</h1>
+        <% if (products.length < 1){ %>
+          <p>No Product found!</p>
+          <% } %>
         <ul>
+          <% for(const product of products) { %>
+
           <li>
             <img
-              src="https://flyingtiger.com/cdn/shop/products/clipboard-with-paper-pad-office-flying-tiger-copenhagen-220241.jpg?v=1671175824"
+              src="<%= product.path %>"
               alt="Product"
             />
-            <h3>ClipBoard</h3>
-            <a href="/detail">View Detail</a>
+            <h3><%= product.name %></h3>
+            <a href="/detail/<%= product._id %>">View Detail</a>
           </li>
+        
+          <% } %>
         </ul>
       </div>
     </main>
