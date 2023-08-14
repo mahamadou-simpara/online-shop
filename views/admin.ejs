@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('includes/head', {title: "Admin", css: '/css/admin.css'}) %>
+  <%- include('includes/head', {title: "Admin", css: '/css/admin.css'}) %>
   <body>
     <%- include('includes/header') %>
-   
     <main>
       <div id="container">
         <h1>All Products</h1>
@@ -11,20 +10,29 @@
         <div id="add-product">
           <a href="/update">Add Product</a>
         </div>
+        <% if (products.length < 1){ %>
+        <p>No Product found, Please create some !</p>
+        <% } %>
         <ul>
+          <% for(const product of products) { %>
+
           <li>
-            <img
-              src="https://flyingtiger.com/cdn/shop/products/clipboard-with-paper-pad-office-flying-tiger-copenhagen-220241.jpg?v=1671175824"
-              alt="Product"
-            />
-            <h3>ClipBoard</h3>
+            <img src="<%= product.path %>" alt="Product" />
+            <h3><%= product.name %></h3>
             <div id="product-actions">
-                <a href="/update">View & Edit</a>
-                <form action="">
-                    <button>Delete</button>
-                </div>
-                </form>
+              <a href="/update/<%= product._id %>">View & Edit</a>
+              <form action="/delete_product" method="POST">
+                <input
+                  type="hidden"
+                  name="deleteID"
+                  value="<%= product._id %>"
+                />
+                <button>Delete</button>
+              </form>
+            </div>
           </li>
+
+          <% } %>
         </ul>
       </div>
     </main>

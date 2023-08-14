@@ -1,129 +1,127 @@
-*{
- box-sizing: border-box;
- font-family: 'Roboto', sans-serif;
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
-body{
- margin: 0;
- padding: 0;
- background-color: rgb(24, 14, 2);
- color: rgb(163, 98, 0);
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(24, 14, 2);
+  color: rgb(163, 98, 0);
 }
 
-header{
- width: 70%;
- margin: 0 auto;
- display: flex;
- justify-content: space-between;
- align-items: center;
- font-weight: 400;
- padding: 1rem 1.5rem;
- border-bottom: 1px solid rgb(163, 98, 0);
+header {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 400;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgb(163, 98, 0);
 }
 
-header h1{
- margin: 0;
- font-weight: bold;
- font-size: 2rem;
- cursor: pointer;
- /* font-size: 2rem; */
+header h1 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 2rem;
+  cursor: pointer;
+  /* font-size: 2rem; */
 }
-header h1:hover{
+header h1:hover {
   color: rgb(218, 146, 0);
 }
-header ul{
- display: flex;
- list-style: none;
- gap: 3rem;
- padding: 0;
- align-items: center;
+header ul {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+  padding: 0;
+  align-items: center;
 }
 
-header ul a{
-text-decoration: none;
-color: rgb(178, 119, 0);
-cursor: pointer;
- }
-header ul li:hover{
- cursor: pointer;
- color: rgb(255, 168, 69);
+header ul a {
+  text-decoration: none;
+  color: rgb(178, 119, 0);
+  cursor: pointer;
+}
+header ul li:hover {
+  cursor: pointer;
+  color: rgb(255, 168, 69);
 }
 
-header ul li span{
- background-color: rgb(163, 98, 0);
- color: white;
- border-radius: 40%;
- padding: 0 0.7rem; 
- margin-left: 0.5rem;
+header ul li span {
+  background-color: rgb(163, 98, 0);
+  color: white;
+  border-radius: 40%;
+  padding: 0 0.7rem;
+  margin-left: 0.5rem;
 }
 
-
-
-#container{
- width: 60%;
- margin: 0 auto;
+#container {
+  width: 60%;
+  margin: 0 auto;
 }
 
-#container h1{
- color: white;
+#container h1 {
+  color: white;
 }
 
-#container ul{
- list-style: none;
- display: flex;
- padding: 0;
- gap: 1.2rem;
- display: grid;
- grid-template-columns: 1fr 1fr 1fr 1fr;
+#container ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  gap: 1.2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 #container ul li {
- /* border: 4px solid red; */
-  width: 250px; 
+  /* border: 4px solid red; */
+  width: 250px;
   height: 250px;
- flex-wrap: nowrap;
- padding: 0; 
- text-align: center;
- background-color: black;
- border-radius: 5px;
- overflow: hidden;
+  flex-wrap: nowrap;
+  padding: 0;
+  text-align: center;
+  background-color: black;
+  border-radius: 5px;
+  overflow: hidden;
 }
 /* #container ul li h3{
 
 } */
 
-#container ul li img{
- width: 100%;
- height: 50%;
- object-fit: cover;
+#container ul li img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
 }
 
-#container ul li a{
- text-decoration: none;
- color: rgb(163, 98, 0);
- border: 1px solid rgb(163, 98, 0);
- padding: 8px 20px;
- border-radius: 4px;
+#container ul li a {
+  text-decoration: none;
+  color: rgb(163, 98, 0);
+  border: 1px solid rgb(163, 98, 0);
+  padding: 8px 20px;
+  border-radius: 4px;
 }
 
-#container ul li a:hover{
- background-color: rgb(29, 27, 27);
- color: rgb(240, 158, 35);
+#container ul li a:hover {
+  background-color: rgb(29, 27, 27);
+  color: rgb(240, 158, 35);
 }
 
-#logout-button{
-    /* height: 1.7rem; */
-    background-color: transparent;
-    border: 1px solid rgb(163, 98, 0);
-    color:  rgb(163, 98, 0);
-    padding: 0.3rem 1rem;
-    border-radius: 5px;
-   }
+#logout-button {
+  /* height: 1.7rem; */
+  background-color: transparent;
+  border: 1px solid rgb(163, 98, 0);
+  color: rgb(163, 98, 0);
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+}
 
-   #logout-button:hover{
-    background-color: rgba(167, 167, 167, 0.128);
-    color: rgb(218, 146, 0);
-   }
+#logout-button:hover {
+  background-color: rgba(167, 167, 167, 0.128);
+  color: rgb(218, 146, 0);
+}
 /* #container ul li:nth-child(4n) {
     clear: left;
     margin-bottom: 10px; 
@@ -131,3 +129,10 @@ header ul li span{
     display: block;
   } */
 
+#logout {
+  margin: 0;
+}
+#logout button {
+  background-color: transparent;
+  border: none;
+}

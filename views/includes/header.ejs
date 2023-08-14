@@ -1,13 +1,23 @@
 <header>
-    <h1>WDE</h1>
-    <ul>
-
-      <a href="/"><li>Shop</li></a>
-      <a href="/cart"><li>Cart <span>2</span></li></a>
-      <a href="/order"><li>Orders</li></a>
-      <a href="/admin"><li>admin</li></a>
-      <a href="/sign-up"><li>Signup</li></a>
-      <a href="/sign-in"><li>Signin</li></a>
-      <li id="logout-button">Logout</li>
-    </ul>
-  </header>
+  <h1>WDE</h1>
+  <ul>
+    <% if(!locals.isAdmin){ %>
+    <a href="/"><li>Shop</li></a>
+    <a href="/cart"
+      ><li>Cart <span>2</span></li></a
+    >
+    <% } %> <% if(locals.isAuth && !locals.isAdmin){ %>
+    <a href="/order"><li>Orders</li></a>
+    <% } %> <% if(locals.isAuth && locals.isAdmin){ %>
+    <a href="/admin"><li>Admin</li></a>
+    <a href="/manage-orders"><li>Manage-Orders</li></a>
+    <% } %> <% if(!locals.isAuth){ %>
+    <a href="/sign-up"><li>Signup</li></a>
+    <a href="/sign-in"><li>Signin</li></a>
+    <% } %> <% if(locals.isAuth){ %>
+    <form action="/log-out" id="logout" method="POST">
+      <button><li id="logout-button">Logout</li></button>
+    </form>
+    <% } %>
+  </ul>
+</header>
