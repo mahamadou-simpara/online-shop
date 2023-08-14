@@ -5,7 +5,7 @@ const path = require("path");
 const db = require("./data/database");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session");
-// const ejs = require('ejs');
+
 
 const SessionStore = MongoDBStore(session);
 
@@ -17,7 +17,9 @@ const store = new SessionStore({
 
 const app = express();
 app.use(express.static("public"));
+app.use("/uploads", express.static("uploads"));
 app.use(express.urlencoded({ extended: false }));
+
 
 app.use(
   session({
@@ -49,6 +51,10 @@ app.set("view engine", "ejs");
 
 app.use(auth);
 app.use(shop);
+
+app.use(function(req, res, nest){
+  res.redirect('/500')
+});
 
 db.connectDB().then(() => {
   app.listen(3000, function () {

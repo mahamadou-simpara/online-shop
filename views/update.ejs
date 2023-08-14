@@ -7,29 +7,29 @@
       <h1>Add & Update Product</h1>
 
       <div id="update-form-container">
-        <form action="">
+        <form action="/add-product" enctype="multipart/form-data" method="POST">
           <div>
-            <label for="">Title</label>
-            <input type="text" name="" id="" />
+            <label for="product_name">Title</label>
+            <input type="text" name="name" id="product_name" />
           </div>
           <div id="img-container">
             <div>
               <label for="img-input">Image</label>
-              <input type="file" name="" id="img-input" />
+              <input type="file" name="image" id="img-input" />
             </div>
             <img id="img" src="" alt="" srcset="" />
           </div>
           <div>
-            <label for="">Summary</label>
-            <input type="text" name="" id="" />
+            <label for="product_summary">Summary</label>
+            <input type="text" name="summary" id="product_summary" />
           </div>
           <div>
-            <label for="">Price</label>
-            <input type="number" name="" id="" />
+            <label for="product_price">Price</label>
+            <input type="number" name="price" id="product_price" />
           </div>
           <div>
-            <label for="">Description</label>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <label for="product_description">Description</label>
+            <textarea name="description" id="product_description" cols="30" rows="10"></textarea>
           </div>
 
           <div id="btns">
