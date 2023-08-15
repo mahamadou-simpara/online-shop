@@ -7,7 +7,7 @@
       <h1>Update Product</h1>
 
       <div id="update-form-container">
-        <form action="/update_product" enctype="multipart/form-data" method="POST">
+        <form action="/update/<%= product._id %>" enctype="multipart/form-data" method="POST">
           <div>
             <label for="product_name">Title</label>
             <input type="text" name="name" id="product_name" value="<%= product.name %>"/>
@@ -16,7 +16,7 @@
           <div id="img-container">
             <div>
               <label for="img-input">Image</label>
-              <input type="file" name="image" id="img-input" />
+              <input type="file" name="image" id="img-input" value="<%= product.path %>"/>
             </div>
             <img id="img" src="/<%= product.path %>" alt="" srcset="" />
           </div>
@@ -35,7 +35,7 @@
 
           <div id="btns">
             <button id="btn-reset" type="reset">Reset</button>
-            <button id="btn-save">Save</button>
+            <button type="submit" id="btn-save">Save</button>
           </div>
         </form>
       </div>
