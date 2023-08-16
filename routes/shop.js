@@ -38,13 +38,33 @@ route.get("/admin", async (req, res) => {
 });
 
 route.get("/cart", (req, res) => {
-  res.render("cart");
+  const orders = req.session.items;
+
+  let totalPrice = 0;
+ 
+  for (let i = 0; i < orders.length; i++) {
+      let singlePrice = 0;
+      const item = req.session.items[i];
+      singlePrice = item.price;
+      totalPrice = (totalPrice + singlePrice);
+  }
+  console.log(totalPrice);
+
+  res.render("cart", {orders: orders});
 });
 
 route.get("/detail/:id", async (req, res) => {
   const id = new ObjectId(req.params.id);
   const product = await db.getDB().collection("products").findOne(id);
-  res.render("detail", { product: product });
+  let userID;
+  if(!req.session.user){
+    userID = 'guest';
+  }else{
+    userID = req.session.user.id;
+  };
+console.log(userID);
+
+  res.render("detail", { product: product,  userID: userID});
 });
 
 route.get("/order", (req, res) => {
@@ -219,7 +239,57 @@ route.post("/update/:id", upload.single("image"), async (req, res) => {
 
 route.post('/order', (req, res) =>{
 
-    
+    console.log(req.body);
+    console.log('See');
+ 
+    // req.session.items = [];
+
+    if (!req.session.items) {
+        req.session.items = [];
+    }
+
+    // Add the new order to the array
+    req.session.items.push({
+        name: req.body.name,
+        price: req.body.price,
+        date: req.body.date,
+        id:  req.body.id, 
+        quantity: req.body.quantity
+    });
+
+    res.redirect('/cart');
+});
+
+
+
+route.post('/update-quantity',async (req, res) =>{
+
+    const itemIdToUpdate = req.body.id;
+    const newQuantity = req.body.quantity;
+
+    if(newQuantity > 21){
+        console.log('Please order products in quantities of 20 or fewer at a time');
+        return;
+    }
+
+    if (!req.session.items) {
+        return res.redirect('/cart'); // No items in session
+    }
+
+    // console.log(itemIdToUpdate);
+    const itemIndex = req.session.items.findIndex(item => item.id === itemIdToUpdate);
+   
+    console.log(itemIndex);
+
+    // const itemIndex = req.session.items.findIndex(item => item.id === itemIdToUpdate);
+    // console.log(itemIndex);
+
+    if (itemIndex !== -1) {
+        req.session.items[itemIndex].quantity = newQuantity;
+    };
+
+    // console.log(req.session.items);
+    res.redirect('/cart');
 })
 
 module.exports = route;

@@ -6,7 +6,7 @@ const multer = require("multer");
 const db = require("./data/database");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session");
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 
 const SessionStore = MongoDBStore(session);
@@ -36,6 +36,14 @@ app.use(
 );
 
 app.use(function (req, res, next) {
+
+
+  // if(!length.length === 0){
+  //   length = 0
+  // };
+  res.locals.length = req.session.items.length;
+
+
   const isAuth = req.session.isAuth;
   if (!isAuth) {
     return next();
@@ -57,6 +65,11 @@ app.set("view engine", "ejs");
 app.use(auth);
 app.use(shop);
 
+// app.use(function (req, res, next) {
+//   res.locals.length = req.session.items.length;
+//   next();
+// });
+
 
 app.use(function(req, res, nest){
   res.redirect('/500')
@@ -67,3 +80,5 @@ db.connectDB().then(() => {
     console.log("App's running onn 3000!");
   });
 });
+
+

@@ -70,3 +70,8 @@ main{
     padding: 0.1rem 1rem;
     border-radius: 3px;
 }
+
+#form-quantity{
+ display: flex;
+ gap: 0.5rem;
+}

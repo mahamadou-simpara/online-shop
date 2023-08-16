@@ -8,17 +8,22 @@
 
       <div id="cart-item-container">
         <ul>
+          <% for( const order of orders){ %>
           <li>
             <div>
-              <h2>Magic Trackpad</h2>
-              <p>$<span>59,99</span></p>
+              <h2><%= order.name %></h2>
+              <p>$<span><%= (order.price * order.quantity) %></span></p>
             </div>
 
             <div id="update-number">
-              <input type="number" name="" />
-              <div><button>Update</button></div>
+            <form action="/update-quantity" id="form-quantity" method="POST">
+              <input type="number" name="quantity" value="<%= order.quantity %>" min="1" />
+              <input type="hidden" name="id" value="<%= order.id %>" min="1"  />
+              <div><button >Update</button></div>
+            </form>
             </div>
           </li>
+          <% } %>
         </ul>
 
         <div id="total-amount">
