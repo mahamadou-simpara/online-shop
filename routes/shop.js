@@ -38,21 +38,48 @@ route.get("/admin", async (req, res) => {
 });
 
 route.get("/cart", (req, res) => {
-  res.render("cart");
+  const orders = req.session.items;
+
+  let overAllAmount = 0;
+
+ 
+  for (let i = 0; i < orders.length; i++) {
+      let singlePrice = 0;
+      const item = req.session.items[i];
+      singlePrice = item.total;
+      overAllAmount = (overAllAmount + singlePrice);
+  }
+  console.log(overAllAmount);
+
+  res.render("cart", {orders: orders, overAllAmount: overAllAmount});
 });
 
 route.get("/detail/:id", async (req, res) => {
-  const id = new ObjectId(req.params.id);
+  const id = new ObjectId(req.params.id); 
   const product = await db.getDB().collection("products").findOne(id);
-  res.render("detail", { product: product });
+  let userID;
+  if(!req.session.user){
+    userID = 'guest';
+  }else{
+    userID = req.session.user.id;
+  };
+console.log(userID);
+
+  res.render("detail", { product: product,  userID: userID});
 });
 
-route.get("/order", (req, res) => {
+route.get("/order",async (req, res) => {
   if (!req.session.isAuth) {
     res.redirect("404");
     return;
   }
-  res.render("orders");
+  const userID = req.session.user.id
+
+  
+//   const result = await db.getDB().collection('orders').find({id: userID}).toArray();
+//   console.log(result);
+
+  res.render("orders", );
 });
 
 route.get("/manage-orders", (req, res) => {
@@ -219,7 +246,132 @@ route.post("/update/:id", upload.single("image"), async (req, res) => {
 
 route.post('/order', (req, res) =>{
 
-    
-})
+    console.log(req.body);
+  
+ 
+    // req.session.items = [];
+
+    if (!req.session.items) {
+        req.session.items = [];
+    };
+
+    try{
+
+
+    // Add the new order to the array
+    req.session.items.push({
+        name: req.body.name,
+        price: req.body.price,
+        date: req.body.date,
+        id:  req.body.id, 
+        quantity: req.body.quantity,
+        total: (+req.body.price * req.body.quantity)
+    });
+
+    req.session.save(() =>{
+        res.redirect('/');
+    });
+
+} catch(error){
+     console.log(error);
+}
+
+console.log('See');
+
+
+});
+
+
+
+route.post('/update-quantity',async (req, res) =>{
+
+    const itemIdToUpdate = req.body.id;
+    const newQuantity = req.body.quantity;
+
+    if(newQuantity > 21){
+        console.log('Please order products in quantities of 20 or fewer at a time');
+        return;
+    }
+
+    if (!req.session.items) {
+        return res.redirect('/cart'); // No items in session
+    }
+
+    // console.log(itemIdToUpdate);
+    const itemIndex = req.session.items.findIndex(item => item.id === itemIdToUpdate);
+   
+    console.log(itemIndex);
+
+    // const itemIndex = req.session.items.findIndex(item => item.id === itemIdToUpdate);
+    // console.log(itemIndex);
+
+    if (itemIndex !== -1) {
+        req.session.items[itemIndex].quantity = newQuantity;
+        req.session.items[itemIndex].total = (+req.session.items[itemIndex].quantity * req.session.items[itemIndex].price)
+    };
+
+    req.session.save(() =>{
+        res.redirect('/cart');
+    })
+    // console.log(req.session.items);
+});
+
+
+route.get('/get-item', (req, res) => {
+    const items = req.session.items
+
+    res.json(items);
+});
+
+
+route.get('/get-user', (req, res) => {
+    const user = req.session.isAuth
+    let userState;
+
+    if (!user) {
+       userState = 'Guest';
+    }else{
+        userState = 'Customer'
+    }
+
+    res.json({userState});
+});
+
+
+route.post('/buy',async (req, res) => {
+    if(req.body.userState !== 'Customer'){
+        console.log('Not Allowed');
+        return
+    }
+
+    if(req.session.items.length < 1){
+        console.log('You don\'t have any item');
+        res.redirect('/order');
+        return;
+    }
+
+
+    const items = [...req.session.items];
+
+    const order = {
+        id: req.session.user.id,
+        date: new Date(),
+        items: items
+    }
+
+    console.log(items);
+
+    console.log(order);
+
+    // const result = await db.getDB().collection('orders').insertOne(order);
+
+    // console.log(result);
+
+    req.session.items = [];
+
+    res.redirect(req.originalUrl);
+
+    // return res.redirect('/order');
+});
 
 module.exports = route;

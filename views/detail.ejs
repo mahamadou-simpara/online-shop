@@ -18,9 +18,10 @@
           <p>$<span><%= product.price %></span></p>
 
           <div id="Add-button">
-            <form action="/order" method="POST">
-              <input type="hidden" name="product-name" value="<%= product.name %>">
-              <input type="hidden" name="product-price" value="<%= product.price %>">
+            <form>
+              <input type="hidden" name="product-name" id="product_name" value="<%= product.name %>">
+              <input type="hidden" name="product-price" id="product_price" value="<%= product.price %>">
+              <input type="hidden" name="product-id" id="product-id" value="<%= product._id %>">
               <button id="add-order">Add</button>
             </form>
           </div>

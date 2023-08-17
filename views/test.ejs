@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('includes/head', {title: "Update", css: '/css/update_product.css'}) %>
+  <body>
+    <%- include('includes/header') %>
+    <main>
+      <h1>Update Product</h1>
+
+      <div id="update-form-container">
+        <form action="/update/<%= product._id %>" enctype="multipart/form-data" method="POST">
+          <div>
+            <label for="product_name">Title</label>
+            <input type="text" name="name" id="product_name" value="<%= product.name %>"/>
+            <input type="text" name="id" id="product_name" value="<%= product._id %>"/>
+          </div>
+          <div id="img-container">
+            <div>
+              <label for="img-input">Image</label>
+              <!-- <input type="file" name="image" id="img-input" value="<%= product.path %>"/> -->
+            </div>
+            <img id="img" src="/<%= product.path %>" alt="" srcset="" />
+          </div>
+          <div>
+            <label for="product_summary">Summary</label>
+            <input type="text" name="summary" id="product_summary" value="<%= product.summary %>"/>
+          </div>
+          <div>
+            <label for="product_price">Price</label>
+            <input type="number" name="price" id="product_price" value="<%= product.price %>" />
+          </div>
+          <div>
+            <label for="product_description">Description</label>
+            <textarea name="description" id="product_description" cols="30" rows="10"><%= product.description %></textarea>
+          </div>
+
+          <div id="btns">
+            <button id="btn-reset" type="reset">Reset</button>
+            <button type="submit" id="btn-save">Save</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
