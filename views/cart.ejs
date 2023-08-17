@@ -7,6 +7,9 @@
       <h1>Your Cart</h1>
 
       <div id="cart-item-container">
+        <% if(orders.length < 1) { %>
+        <h2>You don't have ordered anything yet !</h2>
+        <% } %>
         <ul>
           <% for( const order of orders){ %>
           <li>
@@ -16,21 +19,36 @@
             </div>
 
             <div id="update-number">
-            <form action="/update-quantity" id="form-quantity" method="POST">
-              <input type="number" name="quantity" value="<%= order.quantity %>" min="1" />
-              <input type="hidden" name="id" value="<%= order.id %>" min="1"  />
-              <div><button >Update</button></div>
-            </form>
+              <form action="/update-quantity" id="form-quantity" method="POST">
+                <input
+                  type="number"
+                  name="quantity"
+                  value="<%= order.quantity %>"
+                  min="1"
+                />
+                <input
+                  type="hidden"
+                  name="id"
+                  value="<%= order.id %>"
+                  min="1"
+                />
+                <div><button>Update</button></div>
+              </form>
             </div>
           </li>
           <% } %>
         </ul>
-
+        <% if(!orders.length < 1) { %>
         <div id="total-amount">
-          <h3>Total: $<span>200</span></h3>
+          <h3>Total: $<span><%= overAllAmount %></span></h3>
           <!-- <p>Login to proceed and puechace the items</p> -->
-          <button id="buy-product-btn">Buy Product</button>
+          <div id="buy-product-div">
+            <button id="buy-product-btn">Buy Product</button>
+            <p class="alert">Please, Sign in First !</p>
+
+          </div>
         </div>
+        <% } %>
       </div>
     </main>
   </body>
