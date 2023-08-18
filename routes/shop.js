@@ -347,29 +347,34 @@ route.post('/buy',async (req, res) => {
     if(req.session.items.length < 1){
         console.log('You don\'t have any item');
         res.redirect('/order');
-        return;
+        return; 
     }
 
+    
+   
 
-    const items = [...req.session.items];
+   const order = {
+    id: req.session.user.id,
+    date: new Date(),
+    items: req.session.items,
+   };
+//     req.session.items.push({
+//     id: req.session.user.id,
+//     date: new Date()
+//    });
 
-    const order = {
-        id: req.session.user.id,
-        date: new Date(),
-        items: items
-    }
+   
+ 
 
-    console.log(items);
+//    console.log(req.session.items);
 
-    console.log(order);
+    const result = await db.getDB().collection('orders').insertOne(order);
 
-    // const result = await db.getDB().collection('orders').insertOne(order);
-
-    // console.log(result);
+    console.log(result);
 
     req.session.items = [];
 
-    res.redirect(req.originalUrl);
+    res.redirect('/');
 
     // return res.redirect('/order');
 });

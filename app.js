@@ -37,11 +37,10 @@ app.use(
 
 app.use(function (req, res, next) {
 
+  if(req.session.items.length > 0){
+    res.locals.length = req.session.items.length;
+  }
 
-  // if(!length.length === 0){
-  //   length = 0
-  // };
-  res.locals.length = req.session.items.length;
 
 
   const isAuth = req.session.isAuth;

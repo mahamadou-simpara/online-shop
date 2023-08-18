@@ -4,7 +4,9 @@
     <% if(!locals.isAdmin){ %>
     <a href="/"><li>Shop</li></a>
     <a href="/cart"
-      ><li>Cart <span><%= locals.length %></span></li></a
+      ><li>
+        Cart <% if(locals.length ){%> <span><%= locals.length %></span> <%} %>
+      </li></a
     >
     <% } %> <% if(locals.isAuth && !locals.isAdmin){ %>
     <a href="/order"><li>Orders</li></a>
