@@ -3,7 +3,7 @@ const productNameEl = document.getElementById("product_name");
 const productPriceEl = document.getElementById("product_price");
 const productIdEl = document.getElementById("product-id");
 
-async function postOrder(e) {
+async function makeOrder(e) {
   e.preventDefault();
 
   const item = {
@@ -14,56 +14,57 @@ async function postOrder(e) {
     quantity: 1,
   };
 
-  console.log("Okay!");
+  // console.log("Okay!");
 
-  const getFetch = fetchItems();
+  // const getFetch = fetchItems();
 
-  const items = await getFetch;
+  //   const items = await getFetch;
 
-  const existingProductCheck = items.some(item => item.id === productIdEl.value);
+  //   const existingProductCheck = items.some(
+  //     (item) => item.id === productIdEl.value
+  //   );
 
-console.log('Ok');
+    // console.log("Ok");
 
-if (existingProductCheck) {
-  console.log('Product exists!');
-  return;
-} else {
-  console.log(items);
+    // if (existingProductCheck) {
+    //   console.log("Product exists!");
+    //   return;
+    // } else {
+    //   console.log(items);
+    // }
+
+    try {
+      const order = await fetch("/order", {
+        method: "POST",
+        body: JSON.stringify(item),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    const data = await response.json();
+
+    // location.reload();
+    if (data.success) {
+      // Update the cart length element
+      cartLengthEl.textContent = data.cartLength;
+      console.log("Order added successfully!");
+    }
+  
 }
 
+// async function fetchItems() {
+//   const reponse = await fetch("/get-item");
+//   console.log(reponse);
 
+//   if (!reponse.item) {
+//     return;
+//   }
 
+//   const order = await reponse.json();
+//   return order;
+// }
 
-  try {
-    const order = await fetch("/order", {
-      method: "POST",
-      body: JSON.stringify(item),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  } catch (error) {
-    console.log(error);
-  }
-  const data = await response.json();
-
-  // location.reload();
-  if (data.success) {
-    // Update the cart length element
-    cartLengthEl.textContent = data.cartLength;
-    console.log("Order added successfully!");
-  };
-
-
-}
-
-async function fetchItems() {
-  const reponse = await fetch("/get-item");
-
-  const order = await reponse.json();
-  return order;
-};
-
-
-
-addOrder.addEventListener("click", postOrder);
+addOrder.addEventListener("click", makeOrder);

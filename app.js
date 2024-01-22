@@ -37,9 +37,9 @@ app.use(
 
 app.use(function (req, res, next) {
 
-  if(req.session.items.length > 0){
+  if(req.session.items){
     res.locals.length = req.session.items.length;
-  }
+  };
 
 
 
