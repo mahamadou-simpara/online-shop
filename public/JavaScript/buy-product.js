@@ -14,7 +14,11 @@ async function buyProduct() {
       alertEl.style.display = "block";
     } else if (userState.userState === "Customer") {
       alertEl.style.display = "none";
-    }
+    };
+
+    if(userState.userState === "Guest"){
+      return;
+    };
 
    
 

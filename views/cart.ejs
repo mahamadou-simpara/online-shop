@@ -7,11 +7,11 @@
       <h1>Your Cart</h1>
 
       <div id="cart-item-container">
-        <% if(orders.length < 1) { %>
+        <% if(!orders) { %>
         <h2>You don't have ordered anything yet !</h2>
         <% } %>
         <ul>
-          <% for( const order of orders){ %>
+          <% if(orders){ for(const order of orders){ %>
           <li>
             <div>
               <h2><%= order.name %></h2>
@@ -36,9 +36,9 @@
               </form>
             </div>
           </li>
-          <% } %>
+          <% } } %>
         </ul>
-        <% if(!orders.length < 1) { %>
+        <% if(orders) { %>
         <div id="total-amount">
           <h3>Total: $<span><%= overAllAmount %></span></h3>
           <!-- <p>Login to proceed and puechace the items</p> -->
